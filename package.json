@@ -1,6 +1,6 @@
 {
   "name": "next-plugin-less-module",
-  "version": "1.0.1",
+  "version": "0.1.1",
   "description": "Next plugin for less module support",
   "main": "index.js",
   "keywords": [],
