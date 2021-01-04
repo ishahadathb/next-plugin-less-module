@@ -14,7 +14,6 @@ module.exports = (nextConfig = {}) => ({
 
     config.module.rules.push({
       test: /\.less$/,
-      exclude: /\.module\.less$/,
       use: [
         ExtractCssChunks.loader,
         {
