@@ -2,7 +2,7 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 
 /** Provide nextConfig options along with less & css loader options
  * @param {nextConfig}
- * @param {lessLoaderOptions} for available options https://github.com/webpack-contrib/less-loader#options
+ * @param {lessOptions} for available options http://lesscss.org/usage/#less-options
  * @param {cssLoaderOptions}  https://github.com/webpack-contrib/css-loader#options
  */
 
@@ -10,7 +10,7 @@ module.exports = (nextConfig = {}) => ({
   ...nextConfig,
   webpack: (config, options) => {
     const { dev } = options;
-    const { lessLoaderOptions = {}, cssLoaderOptions = {} } = nextConfig;
+    const { lessOptions = {}, cssLoaderOptions = {} } = nextConfig;
 
     config.module.rules.push({
       test: /\.less$/,
@@ -19,13 +19,12 @@ module.exports = (nextConfig = {}) => ({
         ExtractCssChunks.loader,
         {
           loader: "css-loader",
-          options: { importLoaders: 1, ...cssLoaderOptions },
+          options: { ...cssLoaderOptions, importLoaders: 1 },
         },
         {
           loader: "less-loader",
           options: {
-            lessOptions: { javascriptEnabled: true },
-            ...lessLoaderOptions,
+            lessOptions: { ...lessOptions, javascriptEnabled: true },
           },
         },
       ],
