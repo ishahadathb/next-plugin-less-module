@@ -10,7 +10,7 @@ module.exports = (nextConfig = {}) => ({
   ...nextConfig,
   webpack: (config, options) => {
     const { dev } = options;
-    const { lessLoaderOptions = {}, cssLoaderOptions = {} } = pluginConfig;
+    const { lessLoaderOptions = {}, cssLoaderOptions = {} } = nextConfig;
 
     config.module.rules.push({
       test: /\.less$/,
